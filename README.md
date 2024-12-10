@@ -52,3 +52,41 @@ In our T2I task, to get an answer you probably need to get local details. For ex
 ```
 graphrag query --root ./GraphRAG/test --method local --query "Provide a detailed prompt for image generation of <YOUR IMAGE PROMPT>. It must be possible to directly input your answer into an image generation model for an accurate image."
 ```
+
+
+## Evaluation
+### Data Structure
+The `evaluation` directory contains the `prompts.csv` file, the `generated images`, and the `pseudo-groundtruth images`.  
+```shell
+├── evaluation
+│   ├── prompts.csv
+│   ├── images
+│   │   ├── 2gen_img_LLAMAgraph
+│   │   │   ├── 200_[prompt].jpg
+│   │   │   ├── 201_[prompt].jpg
+│   │   │   ├── 202_[prompt].jpg
+│   │   │   ├── ...
+│   │   │   ├── 399_[prompt].jpg
+│   │   ├── 2gen_img_LLAMAgraphnoneigh
+│   │   │   ├── ...
+│   │   ├── 2gen_img_LLAMAuserprompt
+│   │   │   ├── ...
+│   │   ├── 2gen_img_graph
+│   │   │   ├── ...
+│   │   ├── 2gen_img_graphnoneigh
+│   │   │   ├── ...
+│   │   ├── 2gen_img_userprompt
+│   │   │   ├── ...
+│   ├── gt_images
+│   │   ├── 200
+│   │   ├── 201
+│   │   ├── 202
+│   │   ├── ...
+│   │   ├── 399
+```
+### Environment
+The evaluation script requires [torch](https://pytorch.org/), [clip](https://github.com/openai/CLIP), [dreamsim](https://github.com/ssundaram21/dreamsim), and other regular Python libraries, including `pandas` and `PIL`, to run.  
+
+### Scripts
+`remove_empty_images.ipynb` is used to remove broken image files from the generation/crawling pipeline.  
+The CLIPScore is implemented in `CLIPScore.ipynb` and the visual similarity is implemented in `visual_similarity.ipynb`.  
