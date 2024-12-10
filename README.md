@@ -48,7 +48,7 @@ For a global understanding of the knowledge graph you just built, run:
 ```
 graphrag query --root ./GraphRAG/test --method global --query "<YOUR QUESTION HERE>"
 ```
-Similarly, to get an answer from local details, run:
+In our T2I task, to get an answer you probably need to get local details. For example, after generating a graph that includes the entities you want to paint, run:
 ```
-graphrag query --root ./GraphRAG/test --method local --query "<YOUR QUESTION HERE>"
+graphrag query --root ./GraphRAG/test --method local --query "Provide a detailed prompt for image generation of <YOUR IMAGE PROMPT>. It must be possible to directly input your answer into an image generation model for an accurate image."
 ```
